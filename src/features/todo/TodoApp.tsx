@@ -1,4 +1,9 @@
+import TodoForm from "./TodoForm.tsx";
+import {useRef} from "react";
+
 const TodoApp = () => {
+
+    const inputRef = useRef<HTMLInputElement>(null);
 
     return (
         <>
@@ -7,13 +12,7 @@ const TodoApp = () => {
                     To-Do list
                 </h1>
 
-                <input
-                    type="text"
-                    className="flex-1 border p-2 rounded"
-                    placeholder="New Task..."
-
-                />
-
+                <TodoForm inputRef={{inputRef}} />
             </div>
         </>
     )

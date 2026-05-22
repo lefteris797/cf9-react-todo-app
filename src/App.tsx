@@ -1,12 +1,14 @@
 import './App.css'
-import {Layout} from "lucide-react";
+import Layout from "./shared/layout/Layout";
 
 function App() {
 
 
   return (
     <>
-      <Layout></Layout>
+      <Layout>
+        <h1></h1>
+      </Layout>
 
     </>
   )

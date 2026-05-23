@@ -12,7 +12,7 @@ const TodoApp = () => {
                     To-Do list
                 </h1>
 
-                <TodoForm inputRef={{inputRef}} />
+                <TodoForm inputRef={inputRef} />
             </div>
         </>
     )

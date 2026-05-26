@@ -1,9 +1,17 @@
 import TodoForm from "./TodoForm.tsx";
 import {useRef} from "react";
+import {useTodos} from "./hooks/useTodos.ts";
 
 const TodoApp = () => {
 
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const {todos, addTodo, removeTodo, editTodo, toggleTodo, clearAll} = useTodos();
+
+    const handleAdd = (text:string) => {
+            addTodo(text);
+            inputRef.current?.focus();
+    }
 
     return (
         <>
@@ -12,7 +20,16 @@ const TodoApp = () => {
                     To-Do list
                 </h1>
 
-                <TodoForm inputRef={inputRef} />
+                <TodoForm onAdd={handleAdd} inputRef={inputRef} />
+                <ul className="space-y-2">
+                    {todos.map(todo => (
+                        <>
+                        <li key={todo.id} className="flex items-center justify-between bg-gray-200 p-2 rounded">
+                        <span>{todo.text}</span>
+                        </li>
+                        </>
+                        ))}
+                </ul>
             </div>
         </>
     )

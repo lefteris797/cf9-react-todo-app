@@ -1,6 +1,9 @@
 import TodoForm from "./TodoForm.tsx";
 import {useRef} from "react";
 import {useTodos} from "./hooks/useTodos.ts";
+import IconButton from "../../shared/ui/IconButton.tsx";
+import {CheckSquare, Square} from "lucide-react";
+import TodoList from "./TodoList.tsx";
 
 const TodoApp = () => {
 
@@ -21,15 +24,7 @@ const TodoApp = () => {
                 </h1>
 
                 <TodoForm onAdd={handleAdd} inputRef={inputRef} />
-                <ul className="space-y-2">
-                    {todos.map(todo => (
-                        <>
-                        <li key={todo.id} className="flex items-center justify-between bg-gray-200 p-2 rounded">
-                        <span>{todo.text}</span>
-                        </li>
-                        </>
-                        ))}
-                </ul>
+                <TodoList todos={todos} onToggle={toggleTodo} onEdit={editTodo} onDelete={removeTodo} />
             </div>
         </>
     )
